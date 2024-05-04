@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <a href="{% url 'top' %}" class="list-group-item list-group-item-action text-center" aria-current="true">All Brands</a>
+                <a href="{% url 'topdata' 'T-Shirt' %}"class="list-group-item list-group-item-action text-center" aria-current="true">T-Shirt</a>
+                <a href="{% url 'topdata' 'Shirt' %}"class="list-group-item list-group-item-action text-center" aria-current="true">Shirt</a>
+                <a href="{% url 'topdata' 'Lenovo' %}" class="list-group-item list-group-item-action text-center" aria-current="true">Childs</a>
+                <a href="{% url 'topdata' 'below' %}" class="list-group-item list-group-item-action text-center" aria-current="true">Below 2000</a>
+                <a href="{% url 'topdata' 'above' %}" class="list-group-item list-group-item-action text-center" aria-current="true">Above 2000</a>
+
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <div class="row">
+               {% for product in topwears %}
+                <div class="col-sm-4 text-center mb-4">
+                    <a href="{% url 'product-detail' product.id %}" class="btn">
+                        <div class="item">
+                            <img src="{{product.img.url}}" alt="" height="250">
+                            <div class="fw-bold">{{product.title}}</div>
+                            <div class="fw-bold">RS . {{product.discount_price}}
+                                <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+                {% endfor %}
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

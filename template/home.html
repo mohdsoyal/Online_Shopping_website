@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+
+{% block main-content %}
+
+
+
+<style>
+
+    .main-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .item-box {
+        width: 23%;
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
+
+
+    .img img {
+        width: 100%;
+        height: 300px;
+        border-radius: 5px;
+    }
+
+
+    .des {
+        margin-top: 10px;
+    }
+
+    .des h4,
+    .des h5,
+    .des p {
+        margin: 0;
+    }
+
+    .des h5 {
+    font-size:30px;
+         padding-top:10px;
+        color: #ff5733;
+    }
+
+    .item-box:hover {
+  transform: scale(1.08);
+  transition: transform 0.2s ease; 
+
+  
+}
+
+@media only screen and (max-width: 768px){
+    
+    .item-box {
+        width: 100%;   
+    }
+
+
+    .img img {
+        width: 100%;
+    
+    }
+
+  
+
+}
+
+</style>
+
+
+
+<div class="main-box">
+    {% for i in bottomwear %}
+<div class="item-box">
+
+    <div class="box">
+         <a href="{% url 'product-detail' i.id %}">
+        <div class="img">
+            <img src="{{ i.img.url }}" alt="Product Image">
+
+        </div>
+         </a>
+        <div class="des">
+            <h6>{{ i.title |slice:"0:25" }}</h>
+            <h5> RS {{ i.discount_price}}</h5>
+            
+        </div>
+    </div>
+</div>
+    {% endfor %}
+</div>
+
+
+
+
+<div class="main-box">
+  {% for i in topwear %}
+<div class="item-box">
+
+  <div class="box">
+       <a href="{% url 'product-detail' i.id %}">
+      <div class="img">
+          <img src="{{ i.img.url }}" alt="Product Image">
+
+      </div>
+       </a>
+      <div class="des">
+          <h6>{{ i.title |slice:"0:25" }}</h>
+          <h5> RS {{ i.discount_price}}</h5>
+          
+      </div>
+  </div>
+</div>
+  {% endfor %}
+</div>
+
+<div class="main-box">
+  {% for i in mobiles %}
+<div class="item-box">
+
+  <div class="box">
+       <a href="{% url 'product-detail' i.id %}">
+      <div class="img">
+          <img src="{{ i.img.url }}" alt="Product Image">
+
+      </div>
+       </a>
+      <div class="des">
+          <h6>{{ i.title |slice:"0:25" }}</h>
+          <h5> RS {{ i.discount_price}}</h5>
+          
+      </div>
+  </div>
+</div>
+  {% endfor %}
+</div>
+
+
+<div class="main-box">
+  {% for i in laptop %}
+<div class="item-box">
+
+  <div class="box">
+       <a href="{% url 'product-detail' i.id %}">
+      <div class="img">
+          <img src="{{ i.img.url }}" alt="Product Image">
+
+      </div>
+       </a>
+      <div class="des">
+          <h6>{{ i.title |slice:"0:25" }}</h>
+          <h5> RS {{ i.discount_price}}</h5>
+          
+      </div>
+  </div>
+</div>
+  {% endfor %}
+</div>
+
+
+{% endblock main-content %}
